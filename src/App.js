@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  componentDidMount() {
+    axios
+      .post("/graphql", { query: "{ quote }" })
+      .then(console.log)
+      .catch(console.log);
+  }
   render() {
     return (
       <div className="App">
