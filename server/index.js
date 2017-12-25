@@ -25,7 +25,7 @@ const schema = buildSchema(`
 `);
 
 const root = {
-  quote: () => quote[Math.floor(Math.random() * 10)]
+  quote: () => JSON.stringify(quote)
 };
 
 app.use(

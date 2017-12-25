@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
+import QuotesContainer from "./components/Quotes/QuotesContainer";
 
 class App extends Component {
-  componentDidMount() {
-    axios
-      .post("/graphql", { query: "{ quote }" })
-      .then(console.log)
-      .catch(console.log);
-  }
   render() {
     return (
       <div className="App">
@@ -17,9 +11,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="container">
+          <QuotesContainer />
+        </div>
       </div>
     );
   }
