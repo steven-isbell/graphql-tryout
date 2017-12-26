@@ -1,9 +1,7 @@
 const express = require("express");
-const graphqlHttp = require("express-graphql");
 const { json } = require("body-parser");
 const cors = require("cors");
-const { buildSchema } = require("graphql");
-const quote = require("./quotes");
+const graphql = require("./graphql/index");
 
 const port = 3001;
 
@@ -18,24 +16,8 @@ app.use((req, res, next) => {
   next();
 });
 
-const schema = buildSchema(`
-    type Query {
-        quote: String,
-    }
-`);
+app.use("/graphql", graphql);
 
-const root = {
-  quote: () => JSON.stringify(quote)
-};
-
-app.use(
-  "/graphql",
-  graphqlHttp({
-    schema,
-    rootValue: root,
-    graphiql: true
-  })
-);
 app.listen(port, () => {
   console.log(`listening on port: ${port}`);
 });
