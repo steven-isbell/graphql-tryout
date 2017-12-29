@@ -19,8 +19,6 @@ const CardWrapper = styled.div`
   max-width: 350px;
 `;
 
-const InputWrapper = styled.div``;
-
 class QuotesContainer extends Component {
   constructor(props) {
     super(props);
